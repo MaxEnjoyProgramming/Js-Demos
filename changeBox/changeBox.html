@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> </title>
+    <style>
+    .content {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .content .box {
+        width: 100px;
+        height: 100px;
+        background: #000;
+        margin: 10px auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <input type="button" value="变宽" />
+        <input type="button" value="变高" />
+        <input type="button" value="变色" />
+        <input type="button" value="隐藏" />
+        <input type="button" value="重置" />
+        <div id="box" class="box"></div>
+    </div>
+    <script>
+    window.onload = function() {
+        var oBtns = document.getElementsByTagName('input'),
+            oBox = document.getElementById('box'),
+            attributes = ["width", "height", "background", "display", "display"],
+            values = ["200px", "200px", "red", "none", "block"];
+
+        for (var i = 0, len = oBtns.length; i < len; i++) {
+            oBtns[i].index = i;
+            oBtns[i].onclick = function() {
+                var index = this.index;
+                (index == len - 1) && (oBox.style.cssText = " ");
+                oBox.style[attributes[index]] = values[index];
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
