@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+    html,
+    body,
+    div,
+    ul,
+    li {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        list-style-type: none;
+    }
+    
+    .main {
+        width: 430px;
+        margin: 10px auto;
+        border: 1px solid #000;
+    }
+    
+    .main .tab {
+        background: #000;
+        border-bottom: 1px solid;
+        font-size: 0px;
+        /*消除li之间的间隙*/
+    }
+    
+    .main .tab li {
+        display: inline-block;
+        color: #fff;
+        font-size: 16px;
+        padding: 4px 15px;
+    }
+    
+    .main .tab li.active {
+        background: #ccc;
+        color: #000;
+    }
+    
+    .main .tab-content div {
+        padding: 15px 20px;
+    }
+    
+    .main .tab-content div ul li {
+        list-style: disc;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <ul id="tab" class="tab">
+            <li class="active">新闻</li>
+            <li>热点</li>
+            <li>本地</li>
+        </ul>
+        <div id="tab_content" class="tab-content">
+            <div id="news" style="display:block">
+                <ul>
+                    <li>人民日报三问过度加班：领导没走你敢走吗</li>
+                    <li>解放军1月内43人晋升少将 含首位空军女师长</li>
+                    <li>两大将领坐镇首部抗美援朝剧：上将刘源任总顾问</li>
+                    <li>盘点巡视组遭恐吓：这没你做的事玩一玩回去吧</li>
+                    <li>运营商推4G套餐不限流量遭吐槽：低速时重回2G</li>
+                </ul>
+            </div>
+            <div id="hotNews" style="display:none">
+                <ul>
+                    <li><em>1</em>回归无望！勇士大闸因伤将缺席总决赛剩余比赛</li>
+                    <li><em>2</em>自卫队差点在钓鱼岛开火？解放军少将称日本不敢</li>
+                    <li><em>3</em>云南原书记白恩培被控受贿近2.5亿 当庭认罪</li>
+                    <li><em>4</em>常丁求不到50岁成解放军最年轻战区司令 靠的是啥</li>
+                    <li><em>5</em>一家三口深夜被拖出房 房屋被夷为平地</li>
+                    <li><em>6</em>欧洲杯-法国半场暂平阿尔巴尼亚 马夏尔屡次受阻</li>
+                    <li><em>7</em>法国封神6万人燃爆 梅西C罗夹缝中杀出8千万巨神</li>
+                    <li><em>8</em>詹皇：要将比赛拖入抢七 需要勒夫打得更好</li>
+                </ul>
+            </div>
+            <div id="localNews" style="display:none">
+                <ul>
+                    <li>英国女性地方议员遭枪击身亡</li>
+                    <li>日本北海道5.3级地震 函馆部分区域震感强烈</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+    window.onload = function() {
+        var oTab = document.getElementById("tab").getElementsByTagName("li"),
+            oContent = document.getElementById("tab_content").getElementsByTagName("div");
+
+        for (var i = 0, len = oTab.length; i < len; i++) {
+            // oTabChild.forEach(function(child,index) {
+            oTab[i].index = i;
+            oTab[i].onmouseover = function() {
+                for (var j = 0; j < len; ++j) {
+                    // removeClass(oTabChild[j], "active");
+                    oTab[j].className = "";
+                }
+
+                for (var j = 0; j < oContent.length; ++j) {
+                    oContent[j].style.display = "none";
+                }
+
+                this.className = "active";
+                oContent[this.index].style.display = "block";
+            };
+            // });
+        }
+    }
+
+    // 添加class,移除class
+    // function hasClass(elements, cName) {
+    //     return !!elements.className.match(new RegExp("(\\s|^)" + cName + "(\\s|$)"));
+    // };
+
+    // function addClass(elements, cName) {
+    //     if (!hasClass(elements, cName)) {
+    //         elements.className += " " + cName;
+    //     };
+    // };
+
+    // function removeClass(elements, cName) {
+    //     if (hasClass(elements, cName)) {
+    //         elements.className = elements.className.replace(new RegExp("(\\s|^)" + cName + "(\\s|$)"), " ");
+    //     };
+    // };
+    </script>
+</body>
+
+</html>
