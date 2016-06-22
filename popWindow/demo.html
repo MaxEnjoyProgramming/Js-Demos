@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+    html,
+    body {
+        height: 100%;
+        /*overflow: hidden;*/
+    }
+    
+    html,
+    body,
+    div,
+    a {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .content {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .window {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+    
+    .window .box {
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: -100px;
+        border: 4px solid #f90;
+        background: #fff;
+    }
+    
+    .window .box header {
+        height: 30px;
+        line-height: 30px;
+        background: #FC0;
+        border-bottom: 4px solid #f90;
+        text-align: right;
+    }
+    
+    .window .box header a {
+        color: #F90;
+        text-decoration: none;
+        background: #fff;
+        padding: 0 3px;
+        margin-right: 5px;
+        border: 1px solid #f90;
+    }
+    </style>
+    <script>
+    window.onload = function() {
+        var oBtn = document.getElementById('btn'),
+            oWindow = document.getElementById('window'),
+            oClose=document.getElementById('close');
+
+            oBtn.onclick=function(){
+            	oWindow.style.display="block";
+            }
+
+            oClose.onclick=function(){
+            	oWindow.style.display="none";
+            }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <input id="btn" type="button" value="点击" />
+    </div>
+    <!-- 遮罩和box分开较好 -->
+    <div id="window" class="window">
+        <div class="box">
+            <header>
+                <a id="close" href="javascript:;">×</a>
+            </header>
+        </div>
+    </div>
+</body>
+
+</html>
